@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRChat.Api", "SignalRChat.Api\SignalRChat.Api.csproj", "{04889918-9391-4A24-902F-EFBE1A582D0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRChat.Api", "SignalRChat.Api\SignalRChat.Api.csproj", "{04889918-9391-4A24-902F-EFBE1A582D0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRChat.DataLayer", "SignalRChat.DataLayer\SignalRChat.DataLayer.csproj", "{79E926DE-3B1C-4827-A357-76ABE736B17C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRChat.Helpers", "SignalRChat.Helpers\SignalRChat.Helpers.csproj", "{FC217A6F-8482-4953-9C46-74E5A9F7F105}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRChat.BusinessLayer", "SignalRChat.BusinessLayer\SignalRChat.BusinessLayer.csproj", "{F6BFD94F-0E1A-45C2-B505-E74CBECCEA0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{04889918-9391-4A24-902F-EFBE1A582D0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04889918-9391-4A24-902F-EFBE1A582D0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04889918-9391-4A24-902F-EFBE1A582D0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79E926DE-3B1C-4827-A357-76ABE736B17C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79E926DE-3B1C-4827-A357-76ABE736B17C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79E926DE-3B1C-4827-A357-76ABE736B17C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79E926DE-3B1C-4827-A357-76ABE736B17C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC217A6F-8482-4953-9C46-74E5A9F7F105}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC217A6F-8482-4953-9C46-74E5A9F7F105}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC217A6F-8482-4953-9C46-74E5A9F7F105}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC217A6F-8482-4953-9C46-74E5A9F7F105}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6BFD94F-0E1A-45C2-B505-E74CBECCEA0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6BFD94F-0E1A-45C2-B505-E74CBECCEA0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6BFD94F-0E1A-45C2-B505-E74CBECCEA0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6BFD94F-0E1A-45C2-B505-E74CBECCEA0E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

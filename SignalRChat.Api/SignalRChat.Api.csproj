@@ -13,4 +13,10 @@
     <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SignalRChat.BusinessLayer\SignalRChat.BusinessLayer.csproj" />
+    <ProjectReference Include="..\SignalRChat.DataLayer\SignalRChat.DataLayer.csproj" />
+    <ProjectReference Include="..\SignalRChat.Helpers\SignalRChat.Helpers.csproj" />
+  </ItemGroup>
+
 </Project>
