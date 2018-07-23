@@ -1,25 +1,33 @@
-import { AUTH } from './types';
+import axios from 'axios';
 import Config from '../config';
 import { getUserFromToken } from '../helpers/authHelper';
+import { AUTH_SUCCESS, AUTH_ERROR } from './types';
 
 const controller = 'Account';
 
 export const getToken = (auth) => dispatch => {
-    fetch(`${Config.ApiHost}/${controller}/GetToken`, {
-        method: 'Post',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(auth)
-    })
-        .then(res => res.json())
-        .then(data => {
-            const user = getUserFromToken(data.token);
+    axios
+        .post(`${Config.ApiHost}/${controller}/GetToken`, auth)
+        .then(resp => {
+            const user = getUserFromToken(resp.data.token);
             window.localStorage.setItem('user', JSON.stringify(user));
             dispatch({
-                type: AUTH,
+                type: AUTH_SUCCESS,
                 payload: user
             })
         })
-        .catch(err => console.log(err));
+        .catch(error => {
+            if (error.response) {
+                dispatch({
+                    type: AUTH_ERROR,
+                    payload: error.response.data
+                });
+            }
+            else {
+                dispatch({
+                    type: AUTH_ERROR,
+                    payload: { error: error.message }
+                });
+            }
+        })
 };

@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json.Serialization;
 using SignalRChat.Api.Hubs;
 using SignalRChat.DataLayer.Data;
 using SignalRChat.DataLayer.Models;
@@ -82,7 +83,9 @@ namespace SignalRChat.Api
                 }));
 
             services.AddSignalR();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver());
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
         }
 

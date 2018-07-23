@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getToken } from '../actions/authAction';
+import { PropTypes } from 'prop-types';
 import LoginForm from '../components/LoginForm';
 
 
@@ -9,7 +10,8 @@ class Login extends Component {
         super(props);
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            errors: {}
         };
 
         this.onChange = this.onChange.bind(this);
@@ -17,8 +19,10 @@ class Login extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.auth)
-            console.log(nextProps.auth);
+        if (nextProps.auth && nextProps.auth.errors) {
+            console.log(nextProps.auth.errors);
+            this.setState({ errors: nextProps.auth.errors });
+        }
     }
 
     onChange(e) {
@@ -40,9 +44,14 @@ class Login extends Component {
             onSubmit={this.onSubmit}
             onChange={this.onChange}
             username={this.state.username}
-            password={this.state.password} />);
+            password={this.state.password}
+            errors={this.state.errors} />);
     }
-}
+};
+
+Login.propTypes = {
+    getToken: PropTypes.func.isRequired
+};
 
 const mapStateToProps = state => ({
     auth: state.auth

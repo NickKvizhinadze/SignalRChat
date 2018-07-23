@@ -37,7 +37,7 @@ namespace SignalRChat.Api.Controllers
         public async Task<IActionResult> GetToken([FromBody] LoginViewModel model)
         {
             if (!ModelState.IsValid)
-                return BadRequest("Model is not valid");
+                return BadRequest(ModelState);
 
             var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, false, false);
             if (result.Succeeded)
