@@ -73,6 +73,13 @@ namespace SignalRChat.Api
                     }
                 };
             });
+            services.AddCors(options => options.AddPolicy("CorsPolicy",
+                builder =>
+                {
+                    builder.AllowAnyMethod().AllowAnyHeader()
+                    .AllowAnyOrigin()
+                    .AllowCredentials();
+                }));
 
             services.AddSignalR();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -92,6 +99,7 @@ namespace SignalRChat.Api
             }
 
             app.UseHttpsRedirection();
+            app.UseCors("CorsPolicy");
             app.UseSignalR(routes =>
             {
                 routes.MapHub<ChatHub>("/ChatHub");
