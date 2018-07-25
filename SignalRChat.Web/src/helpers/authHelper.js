@@ -10,3 +10,11 @@ export function getUserFromToken(token) {
         token: token
     };
 }
+
+export function isAuthenticated() {
+    const { token } = JSON.parse(window.localStorage.getItem('user'));
+    var decoded = jwt_decode(token);
+    if (decoded.exp > Date.now)
+        return false;
+    return true;
+}
