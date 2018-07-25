@@ -20,7 +20,6 @@ class Login extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.auth && nextProps.auth.errors) {
-            console.log(nextProps.auth.errors);
             this.setState({ errors: nextProps.auth.errors });
         }
     }

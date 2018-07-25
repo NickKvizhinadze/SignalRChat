@@ -18,9 +18,15 @@ export const getToken = (auth) => dispatch => {
         })
         .catch(error => {
             if (error.response) {
+                let payload;
+                if (error.response.status === 401)
+                    payload = { error: "Username or password is Invalid" };
+                else
+                    payload = error.response.data;
+                    
                 dispatch({
                     type: AUTH_ERROR,
-                    payload: error.response.data
+                    payload: payload
                 });
             }
             else {

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import store from './store';
-import Login from './containers/Login';
-import logo from './logo.svg';
-import './App.css';
+import store from '../store';
+import logo from '../logo.svg';
+import '../App.css';
+import Router from '../Router';
 
 
-class App extends Component {
+class Layout extends Component {
   render() {
     return (
       <Provider store={store}>
@@ -15,11 +15,11 @@ class App extends Component {
             <img src={logo} className="App-logo" alt="logo" />
             <h1 className="App-title">Welcome to React</h1>
           </header>
-          <Login />
+          <Router />
         </div>
       </Provider>
     );
   }
 }
 
-export default App;
+export default Layout;
