@@ -16,7 +16,7 @@ export function isAuthenticated() {
         const user = JSON.parse(window.localStorage.getItem('user'));
         if (!user)
             return false;
-        var decoded = jwt_decode(undefined);
+        var decoded = jwt_decode(user.token);
         if (decoded.exp > Date.now)
             return false;
         return true;

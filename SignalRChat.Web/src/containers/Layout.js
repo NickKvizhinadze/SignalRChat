@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../App.css';
 import logo from '../logo.svg';
 
 
-class Layout extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        {this.props.children}
-      </div>
-    );
-  }
-}
+export const NoLayout = props => (
+  <div>
+    {props.children}
+  </div>
+);
 
-export default Layout;
+export const DefaultLayout = props => (
+  <div className="App">
+    <header className="App-header">
+      <img src={logo} className="App-logo" alt="logo" />
+      <h1 className="App-title">Welcome to React</h1>
+    </header>
+    {props.children}
+  </div>
+);
