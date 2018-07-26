@@ -12,9 +12,15 @@ export function getUserFromToken(token) {
 }
 
 export function isAuthenticated() {
-    const { token } = JSON.parse(window.localStorage.getItem('user'));
-    var decoded = jwt_decode(token);
-    if (decoded.exp > Date.now)
+    try {
+        const user = JSON.parse(window.localStorage.getItem('user'));
+        if (!user)
+            return false;
+        var decoded = jwt_decode(undefined);
+        if (decoded.exp > Date.now)
+            return false;
+        return true;
+    } catch (error) {
         return false;
-    return true;
+    }
 }

@@ -2,7 +2,6 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 
 const LoginForm = ({ onSubmit, onChange, username, password, errors }) => {
-    console.log(errors.username)
     return (
         <div>
             <h1>Authorization</h1>
