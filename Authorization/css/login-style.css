@@ -1,0 +1,217 @@
+:root {
+    --container-bg-color: #333;
+    --login-bg-color: rgba(29, 127, 255, 0.3);
+    --signup-bg-color: rgba(24, 96, 191, 0.3);
+    --hover-width: 70%;
+    --other-width: 30%;
+    --speed: 500ms;
+    --speed-fast: 200ms;
+    --font-color: rgb(29, 127, 255);
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.loginheader, .signupheader {
+    font-size: 50px;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.up {
+    top: 10%;
+    padding-bottom: 15px;
+    border-bottom: 4px solid #fff;
+}
+
+.login-form, .signup-form {
+    opacity: 0;
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    padding: 30px;
+    /* background: rgba(255, 255, 255, 0.7); */
+    background: #fff;
+    border-radius: 20px;
+    width: auto;
+}
+
+.show {
+    opacity: 1;
+}
+
+.social {
+    width: 100%;
+    margin: 20px auto;
+    font-size: 25px;
+    text-align: center;
+}
+
+.fa-facebook-f {
+    padding: 10px 16px;
+    margin-bottom: 20px;
+    color: #3b5998;
+    border-radius: 60%;
+    box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+}
+
+.fa-facebook-f:hover, .fa-facebook-f:active {
+    box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.3);
+}
+
+.fa-google {
+    padding: 10px 10px;
+    margin-bottom: 20px;
+    color: #db3236;
+    border-radius: 60%;
+    box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+}
+
+.fa-google:hover, .fa-google:active {
+    box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.3);
+}
+
+.login-form div, .signup-form div {
+    width: 100%;
+    margin: 5px auto;
+    position: relative;
+}
+
+.login-form div input, .signup-form div input {
+    height: 35px;
+    padding-left: 10px;
+    margin: 5px;
+    width: 250px;
+    color: var(--font-color);
+    border: none;
+    box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+}
+
+/* .login-form div::after, .signup-form div::after {
+    display: block;
+    width: 250px;
+    content: " ";
+    background: var(--font-color);
+    height: 1px;
+    margin-top: 10px;
+    margin: 0 auto;
+} */
+
+
+input[type="checkbox"] {
+    left: 0;
+}
+
+label {
+    color: var(--font-color);
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+
+
+
+.btn, .btn {
+    height: 35px;
+    margin: 20px 30% 0 30%;
+    width: 100px;
+    color: var(--font-color);
+    /* border: 1px solid var(--font-color); */
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover, .btn:active {
+    color: #fff;
+    background: var(--font-color);
+}
+
+
+
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url(../img/login-bg.jpg);
+    background-position: center;  
+    background-size: cover;
+}
+
+.split {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.split.login {
+    left: 0;
+    background: var(--login-bg-color);
+    background-size: cover;
+}
+
+
+.split.signup {
+    right: 0;
+    background: var(--signup-bg-color);
+    background-size: cover;
+}
+
+
+.split.login, .split.signup, .login-form, .signup-form {
+    transition: var(--speed) all ease-in-out;
+}
+
+.loginheader, .signupheader {
+    transition: var(--speed-fast) all ease-in-out;
+}
+
+
+
+.hover-login .login {
+    width: var(--hover-width);
+}
+
+.hover-login .signup {
+    width: var(--other-width);
+}
+
+/* .hover-login .signup:before {
+    z-index: 2;
+} */
+
+.hover-signup .signup {
+    width: var(--hover-width);
+}
+
+.hover-signup .login {
+    width: var(--other-width);
+}
+
+/* .hover-signup .login:before {
+    z-index: 2;
+} */
+
