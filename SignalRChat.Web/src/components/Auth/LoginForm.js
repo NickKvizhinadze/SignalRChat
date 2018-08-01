@@ -2,9 +2,9 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const LoginForm = ({ onSubmit, onChange, username, password, errors, ifShow }) => {
+const LoginForm = ({ onSubmit, onChange, onMouseEnter, username, password, errors, ifShow }) => {
     return (
-        <div className="split login">
+        <div className="split login" onMouseEnter={onMouseEnter}>
             <h1 className={`loginheader ${ifShow ? 'up' : ''}`}>Log In</h1>
             <form className={`login-form ${ifShow ? 'show' : ''}`} onSubmit={onSubmit}>
                 <div className="social">
@@ -47,6 +47,7 @@ const LoginForm = ({ onSubmit, onChange, username, password, errors, ifShow }) =
 LoginForm.propTypes = {
     onSubmit: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
+    onMouseEnter: PropTypes.func.isRequired,
     username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     errors: PropTypes.object,

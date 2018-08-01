@@ -3,9 +3,9 @@ import { PropTypes } from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-const SignUpForm = ({ onMouseEnter, onMouseLeave, onSubmit, onChange, user, errors, ifShow }) => {
+const SignUpForm = ({ onMouseEnter, onSubmit, onChange, user, errors, ifShow }) => {
     return (
-        <div className="split signup" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+        <div className="split signup" onMouseEnter={onMouseEnter}>
             <h1 className={`signupheader ${ifShow ? 'up' : ''}`}>Sign Up</h1>
             <form className={`signup-form ${ifShow ? 'show' : ''}`} onSubmit={onSubmit}>
                 <div className="social">
@@ -95,7 +95,6 @@ const SignUpForm = ({ onMouseEnter, onMouseLeave, onSubmit, onChange, user, erro
 
 SignUpForm.propTypes = {
     onMouseEnter: PropTypes.func.isRequired,
-    onMouseLeave: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
     user: PropTypes.shape({

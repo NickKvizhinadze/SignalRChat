@@ -32,7 +32,7 @@ class Login extends Component {
         this.onSignUpChange = this.onSignUpChange.bind(this);
         this.onSignUpSubmit = this.onSignUpSubmit.bind(this);
         this.onSignUpMouseEnter = this.onSignUpMouseEnter.bind(this);
-        this.onSignUpMouseLeave = this.onSignUpMouseLeave.bind(this);
+        this.onLoginMouseEnter = this.onLoginMouseEnter.bind(this);
 
     }
 
@@ -77,7 +77,7 @@ class Login extends Component {
         this.setState({ registerShow: true });
     }
 
-    onSignUpMouseLeave(e) {
+    onLoginMouseEnter(e) {
         this.setState({ registerShow: false });
     }
 
@@ -93,13 +93,13 @@ class Login extends Component {
             <LoginForm
                 onSubmit={this.onLoginSubmit}
                 onChange={this.onLoginChange}
+                onMouseEnter={this.onLoginMouseEnter}
                 username={this.state.login.username}
                 password={this.state.login.password}
                 errors={this.state.errors}
                 ifShow={!this.state.registerShow} />
             <SignUpForm
                 onMouseEnter={this.onSignUpMouseEnter}
-                onMouseLeave={this.onSignUpMouseLeave}
                 onSubmit={this.onSignUpSubmit}
                 onChange={this.onSignUpChange}
                 user={this.state.signUp}
