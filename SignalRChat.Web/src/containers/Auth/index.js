@@ -12,6 +12,8 @@ class Login extends Component {
         super(props);
         this.state = {
             showSignUp: false,
+            loginLoading: false,
+            signUpLoading: false,
             login: {
                 username: '',
                 password: ''
@@ -37,6 +39,10 @@ class Login extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
+        this.setState({
+            loginLoading: false,
+            signUpLoading: false
+        });
         if (nextProps.auth) {
             if (nextProps.auth.errors)
                 this.setState({ errors: nextProps.auth.errors });
@@ -56,6 +62,7 @@ class Login extends Component {
 
     onLoginSubmit(e) {
         e.preventDefault();
+        this.setState({ loginLoading: true });
         this.props.getToken({
             username: this.state.login.username,
             password: this.state.login.password
@@ -73,6 +80,7 @@ class Login extends Component {
 
     onSignUpSubmit(e) {
         e.preventDefault();
+        this.setState({ signUpLoading: true });
         console.log(this.state.signUp);
         //TODO: Call api
     }
@@ -102,14 +110,16 @@ class Login extends Component {
                 username={this.state.login.username}
                 password={this.state.login.password}
                 errors={this.state.errors}
-                ifShow={!this.state.showSignUp} />
+                ifShow={!this.state.showSignUp}
+                loading={this.state.loginLoading} />
             <SignUpForm
                 onMouseEnter={this.onSignUpMouseEnter}
                 onSubmit={this.onSignUpSubmit}
                 onChange={this.onSignUpChange}
                 user={this.state.signUp}
                 errors={this.state.errors}
-                ifShow={this.state.showSignUp} />
+                ifShow={this.state.showSignUp}
+                loading={this.state.signUpLoading} />
 
         </div>);
     }

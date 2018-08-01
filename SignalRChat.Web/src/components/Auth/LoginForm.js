@@ -1,8 +1,9 @@
-import React from 'react';
-import { PropTypes } from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { PropTypes } from 'prop-types';
+import React from 'react';
+import Loading from '../Shared/Loading';
 
-const LoginForm = ({ onSubmit, onChange, onMouseEnter, username, password, errors, ifShow }) => {
+const LoginForm = ({ onSubmit, onChange, onMouseEnter, username, password, errors, ifShow, loading }) => {
     return (
         <div className="split login" onMouseEnter={onMouseEnter}>
             <h1 className={`loginheader ${ifShow ? 'up' : ''}`}>Log In</h1>
@@ -38,7 +39,12 @@ const LoginForm = ({ onSubmit, onChange, onMouseEnter, username, password, error
                     </div>
                     {errors.password ? (<span className="text-danger">{errors.password}</span>) : null}
                 </div>
-                <button type="submit" className="btn">Log In</button>
+                {loading ? (
+                    <button type="submit" className="btn" disabled>
+                        <Loading size={10} color={'#0e64de'} />
+                    </button>
+                ) : (<button type="submit" className="btn" >Log In</button>)
+                }
             </form>
         </div>
     );
@@ -51,7 +57,8 @@ LoginForm.propTypes = {
     username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     errors: PropTypes.object,
-    ifShow: PropTypes.bool.isRequired
+    ifShow: PropTypes.bool.isRequired,
+    loading: PropTypes.bool.isRequired
 };
 
 export default LoginForm;

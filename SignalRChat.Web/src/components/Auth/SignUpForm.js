@@ -1,9 +1,10 @@
-import React from 'react';
-import { PropTypes } from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { PropTypes } from 'prop-types';
+import React from 'react';
+import Loading from '../Shared/Loading';
 
 
-const SignUpForm = ({ onMouseEnter, onSubmit, onChange, user, errors, ifShow }) => {
+const SignUpForm = ({ onMouseEnter, onSubmit, onChange, user, errors, ifShow, loading }) => {
     return (
         <div className="split signup" onMouseEnter={onMouseEnter}>
             <h1 className={`signupheader ${ifShow ? 'up' : ''}`}>Sign Up</h1>
@@ -22,7 +23,7 @@ const SignUpForm = ({ onMouseEnter, onSubmit, onChange, user, errors, ifShow }) 
                         onChange={onChange}
                         value={user.firstName}
                         required />
-                        {errors.username ? (<span className="text-danger">{errors.firstName}</span>) : null}
+                    {errors.username ? (<span className="text-danger">{errors.firstName}</span>) : null}
                 </div>
 
                 <div>
@@ -34,7 +35,7 @@ const SignUpForm = ({ onMouseEnter, onSubmit, onChange, user, errors, ifShow }) 
                         onChange={onChange}
                         value={user.lastName}
                         required />
-                        {errors.username ? (<span className="text-danger">{errors.lastName}</span>) : null}
+                    {errors.username ? (<span className="text-danger">{errors.lastName}</span>) : null}
                 </div>
 
                 <div>
@@ -46,7 +47,7 @@ const SignUpForm = ({ onMouseEnter, onSubmit, onChange, user, errors, ifShow }) 
                         onChange={onChange}
                         value={user.username}
                         required />
-                        {errors.username ? (<span className="text-danger">{errors.username}</span>) : null}
+                    {errors.username ? (<span className="text-danger">{errors.username}</span>) : null}
                 </div>
 
                 <div>
@@ -58,7 +59,7 @@ const SignUpForm = ({ onMouseEnter, onSubmit, onChange, user, errors, ifShow }) 
                         onChange={onChange}
                         value={user.email}
                         required />
-                        {errors.username ? (<span className="text-danger">{errors.email}</span>) : null}
+                    {errors.username ? (<span className="text-danger">{errors.email}</span>) : null}
                 </div>
 
                 <div>
@@ -70,7 +71,7 @@ const SignUpForm = ({ onMouseEnter, onSubmit, onChange, user, errors, ifShow }) 
                         onChange={onChange}
                         value={user.password}
                         required />
-                        {errors.username ? (<span className="text-danger">{errors.password}</span>) : null}
+                    {errors.username ? (<span className="text-danger">{errors.password}</span>) : null}
                 </div>
 
                 <div>
@@ -82,10 +83,15 @@ const SignUpForm = ({ onMouseEnter, onSubmit, onChange, user, errors, ifShow }) 
                         onChange={onChange}
                         value={user.passwordConfirm}
                         required />
-                        {errors.username ? (<span className="text-danger">{errors.passwordConfirm}</span>) : null}
+                    {errors.username ? (<span className="text-danger">{errors.passwordConfirm}</span>) : null}
                 </div>
 
-                <button type="submit" className="btn">Sign Up</button>
+                {loading ? (
+                    <button type="submit" className="btn" disabled>
+                        <Loading size={10} color={'#0e64de'} />
+                    </button>
+                ) : (<button type="submit" className="btn" >Sign Up</button>)
+                }
             </form>
 
         </div>
@@ -106,7 +112,8 @@ SignUpForm.propTypes = {
         passwordConfirm: PropTypes.string.isRequired
     }).isRequired,
     errors: PropTypes.object,
-    ifShow: PropTypes.bool.isRequired
+    ifShow: PropTypes.bool.isRequired,
+    loading: PropTypes.bool.isRequired
 };
 
 export default SignUpForm;
