@@ -39,6 +39,7 @@ class Login extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
+        debugger;
         this.setState({
             loginLoading: false,
             signUpLoading: false
@@ -46,8 +47,9 @@ class Login extends Component {
         if (nextProps.auth) {
             if (nextProps.auth.errors)
                 this.setState({ errors: nextProps.auth.errors });
-            if (nextProps.auth.user)
+            else if (nextProps.auth.user && nextProps.auth.user.tokens) {
                 this.props.history.push('/home');
+            }
         }
     }
 
@@ -62,7 +64,10 @@ class Login extends Component {
 
     onLoginSubmit(e) {
         e.preventDefault();
-        this.setState({ loginLoading: true });
+        this.setState({
+            loginLoading: true,
+            errors: {}
+        });
         this.props.getToken({
             username: this.state.login.username,
             password: this.state.login.password
@@ -80,7 +85,10 @@ class Login extends Component {
 
     onSignUpSubmit(e) {
         e.preventDefault();
-        this.setState({ signUpLoading: true });
+        this.setState({
+            signUpLoading: true,
+            errors: undefined
+        });
         console.log(this.state.signUp);
         //TODO: Call api
     }
