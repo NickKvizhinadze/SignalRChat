@@ -4,7 +4,7 @@ import { BrowserRouter, Redirect, Switch } from 'react-router-dom';
 import Error from '../containers/Error';
 import Home from '../containers/Home';
 import { DefaultLayout, NoLayout } from '../containers/Layout';
-import Login from '../containers/Login';
+import Login from '../containers/Auth';
 import AppRoute from './AppRoute';
 import PrivateRoute from './PrivateRoute';
 
