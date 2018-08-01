@@ -11,7 +11,7 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            registerShow: false,
+            showSignUp: false,
             login: {
                 username: '',
                 password: ''
@@ -37,8 +37,11 @@ class Login extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.auth && nextProps.auth.errors) {
-            this.setState({ errors: nextProps.auth.errors });
+        if (nextProps.auth) {
+            if (nextProps.auth.errors)
+                this.setState({ errors: nextProps.auth.errors });
+            if (nextProps.auth.user)
+                this.props.history.push('/home');
         }
     }
 
@@ -74,17 +77,19 @@ class Login extends Component {
         //TODO: Call api
     }
     onSignUpMouseEnter(e) {
-        this.setState({ registerShow: true });
+        if (!this.state.showSignUp)
+            this.setState({ showSignUp: true });
     }
 
     onLoginMouseEnter(e) {
-        this.setState({ registerShow: false });
+        if (this.state.showSignUp)
+            this.setState({ showSignUp: false });
     }
 
 
     render() {
         let containerClass = 'container';
-        if (this.state.registerShow)
+        if (this.state.showSignUp)
             containerClass += ' hover-signup';
         else
             containerClass += ' hover-login';
@@ -97,14 +102,14 @@ class Login extends Component {
                 username={this.state.login.username}
                 password={this.state.login.password}
                 errors={this.state.errors}
-                ifShow={!this.state.registerShow} />
+                ifShow={!this.state.showSignUp} />
             <SignUpForm
                 onMouseEnter={this.onSignUpMouseEnter}
                 onSubmit={this.onSignUpSubmit}
                 onChange={this.onSignUpChange}
                 user={this.state.signUp}
                 errors={this.state.errors}
-                ifShow={this.state.registerShow} />
+                ifShow={this.state.showSignUp} />
 
         </div>);
     }

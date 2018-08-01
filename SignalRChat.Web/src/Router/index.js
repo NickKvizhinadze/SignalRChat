@@ -13,7 +13,8 @@ export default (props) => (
     <Provider store={props.store}>
         <BrowserRouter>
             <Switch>
-                <PrivateRoute exact path='/' layout={DefaultLayout} component={Home} />
+                <Redirect exact from="/" to="/home" />
+                <PrivateRoute exact path='/home' layout={DefaultLayout} component={Home} />
                 <AppRoute exact path='/login' layout={NoLayout} component={Login} />
                 <AppRoute exact path="/404" layout={DefaultLayout} component={Error} />
                 <Redirect to="/404" />
