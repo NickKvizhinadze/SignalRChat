@@ -34,8 +34,7 @@ const LoginForm = ({ onSubmit, onChange, onMouseEnter, username, password, error
                             placeholder="Password"
                             required
                             onChange={onChange}
-                            value={password}
-                            autoFocus />
+                            value={password} />
                     </div>
                     {errors.password ? (<span className="text-danger">{errors.password}</span>) : null}
                 </div>

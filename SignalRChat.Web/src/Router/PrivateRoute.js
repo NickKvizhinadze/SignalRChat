@@ -7,5 +7,6 @@ export default ({ component: Component, layout: Layout, ...rest }) => {
     if (isAuthenticated()) {
         return (<AppRoute layout={Layout} component={Component} {...rest} />);
     }
-    return (<Redirect to='/login' />);
+    const { pathname } = rest.location;
+    return (<Redirect to={`/login?returnUrl=${pathname}`} />);
 };

@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { getToken } from '../../actions/authAction';
 import LoginForm from '../../components/Auth/LoginForm';
 import SignUpForm from '../../components/Auth/SignUpForm';
+import queryString from 'query-string';
+
 import './index.css';
 
 
@@ -39,7 +41,6 @@ class Login extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        debugger;
         this.setState({
             loginLoading: false,
             signUpLoading: false
@@ -47,8 +48,12 @@ class Login extends Component {
         if (nextProps.auth) {
             if (nextProps.auth.errors)
                 this.setState({ errors: nextProps.auth.errors });
-            else if (nextProps.auth.user && nextProps.auth.user.tokens) {
-                this.props.history.push('/home');
+            if (nextProps.auth.user && nextProps.auth.user.token) {
+                const { returnUrl } = queryString.parse(this.props.location.search);
+                if (returnUrl)
+                    this.props.history.push(returnUrl);
+                else
+                    this.props.history.push('/home');
             }
         }
     }
