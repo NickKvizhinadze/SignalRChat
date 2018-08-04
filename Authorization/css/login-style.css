@@ -1,4 +1,4 @@
-:root {
+/* :root {
     --container-bg-color: #333;
     --login-bg-color: rgba(29, 127, 255, 0.3);
     --signup-bg-color: rgba(24, 96, 191, 0.3);
@@ -7,7 +7,7 @@
     --speed: 500ms;
     --speed-fast: 200ms;
     --font-color: rgb(29, 127, 255);
-}
+} */
 
 html, body {
     padding: 0;
@@ -30,7 +30,7 @@ html, body {
 .up {
     top: 10%;
     padding-bottom: 15px;
-    border-bottom: 4px solid #fff;
+    /* border-bottom: 4px solid #fff; */
 }
 
 .login-form, .signup-form {
@@ -95,7 +95,7 @@ html, body {
     padding-left: 10px;
     margin: 5px;
     width: 250px;
-    color: var(--font-color);
+    color: rgb(29, 127, 255);
     border: none;
     box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
@@ -105,7 +105,7 @@ html, body {
     display: block;
     width: 250px;
     content: " ";
-    background: var(--font-color);
+    background: rgb(29, 127, 255);
     height: 1px;
     margin-top: 10px;
     margin: 0 auto;
@@ -117,7 +117,7 @@ input[type="checkbox"] {
 }
 
 label {
-    color: var(--font-color);
+    color: rgb(29, 127, 255);
 }
 
 input:focus,
@@ -134,8 +134,8 @@ button:focus {
     height: 35px;
     margin: 20px 30% 0 30%;
     width: 100px;
-    color: var(--font-color);
-    /* border: 1px solid var(--font-color); */
+    color: rgb(29, 127, 255);
+    /* border: 1px solid rgb(29, 127, 255); */
     border-radius: 15px;
     border: none;
     cursor: pointer;
@@ -145,7 +145,7 @@ button:focus {
 
 .btn:hover, .btn:active {
     color: #fff;
-    background: var(--font-color);
+    background: rgb(29, 127, 255);
 }
 
 
@@ -156,7 +156,7 @@ button:focus {
     width: 100%;
     height: 100%;
     background: url(../img/login-bg.jpg);
-    background-position: center;  
+    background-position: center;
     background-size: cover;
 }
 
@@ -169,34 +169,34 @@ button:focus {
 
 .split.login {
     left: 0;
-    background: var(--login-bg-color);
+    background: rgba(29, 127, 255, 0.3);
     background-size: cover;
 }
 
 
 .split.signup {
     right: 0;
-    background: var(--signup-bg-color);
+    background: rgba(24, 96, 191, 0.3);
     background-size: cover;
 }
 
 
 .split.login, .split.signup, .login-form, .signup-form {
-    transition: var(--speed) all ease-in-out;
+    transition: 500ms all ease-in-out;
 }
 
 .loginheader, .signupheader {
-    transition: var(--speed-fast) all ease-in-out;
+    transition: 200ms all ease-in-out;
 }
 
 
 
 .hover-login .login {
-    width: var(--hover-width);
+    width: 70%;
 }
 
 .hover-login .signup {
-    width: var(--other-width);
+    width: 30%;
 }
 
 /* .hover-login .signup:before {
@@ -204,11 +204,11 @@ button:focus {
 } */
 
 .hover-signup .signup {
-    width: var(--hover-width);
+    width: 70%;
 }
 
 .hover-signup .login {
-    width: var(--other-width);
+    width: 30%;
 }
 
 /* .hover-signup .login:before {
