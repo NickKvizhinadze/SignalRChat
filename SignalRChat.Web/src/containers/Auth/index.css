@@ -1,20 +1,10 @@
-:root {
-    --container-bg-color: #333;
-    --login-bg-color: rgba(29, 127, 255, 0.3);
-    --signup-bg-color: rgba(24, 96, 191, 0.3);
-    --hover-width: 70%;
-    --other-width: 30%;
-    --speed: 500ms;
-    --speed-fast: 200ms;
-    --font-color: rgb(29, 127, 255);
-}
-
-html, body, #root, #root > div {
+html, body, #root, #root>div {
     padding: 0 !important;
     margin: 0!important;
     width: 100%!important;
     height: 100vh!important;
     overflow: hidden!important;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', Verdana, sans-serif;
 }
 
 .loginheader, .signupheader {
@@ -30,7 +20,6 @@ html, body, #root, #root > div {
 .up {
     top: 10%;
     padding-bottom: 15px;
-    border-bottom: 4px solid #fff;
 }
 
 .login-form, .signup-form {
@@ -89,15 +78,20 @@ html, body, #root, #root > div {
     position: relative;
 }
 
-.login-form div input, .signup-form div input {
+.input-control {
     height: 35px;
     padding-left: 10px;
     margin: 5px;
     width: 250px;
-    color: var(--font-color);
+    color: rgb(29, 127, 255);
     border: none;
     box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
+    transition: 200ms all ease-in-out;
+}
+
+.input-control:focus {
+    background: #ededed;
 }
 
 input[type="checkbox"] {
@@ -105,7 +99,7 @@ input[type="checkbox"] {
 }
 
 label {
-    color: var(--font-color);
+    color: rgb(29, 127, 255);
 }
 
 input:focus, select:focus, textarea:focus, button:focus {
@@ -116,7 +110,7 @@ input:focus, select:focus, textarea:focus, button:focus {
     height: 35px;
     margin: 20px 30% 0 30%;
     width: 100px;
-    color: var(--font-color);
+    color: rgb(29, 127, 255);
     border-radius: 15px;
     border: none;
     cursor: pointer;
@@ -124,9 +118,9 @@ input:focus, select:focus, textarea:focus, button:focus {
     box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.1);
 }
 
-l .btn:hover, .btn:active {
+.btn:hover, .btn:active {
     color: #fff;
-    background: var(--font-color);
+    background: rgb(29, 127, 255);
 }
 
 .container {
@@ -147,36 +141,40 @@ l .btn:hover, .btn:active {
 
 .split.login {
     left: 0;
-    background: var(--login-bg-color);
+    background: rgba(29, 127, 255, 0.3);
     background-size: cover;
 }
 
 .split.signup {
     right: 0;
-    background: var(--signup-bg-color);
+    background: rgba(24, 96, 191, 0.3);
     background-size: cover;
 }
 
 .split.login, .split.signup, .login-form, .signup-form {
-    transition: var(--speed) all ease-in-out;
+    transition: 500ms all ease-in-out;
 }
 
-.loginheader, .signupheader {
-    transition: var(--speed-fast) all ease-in-out;
+.loginheader, .signupheader, .login, .signup {
+    transition: 200ms all ease-in-out;
 }
 
 .hover-login .login {
-    width: var(--hover-width);
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 70%;
 }
 
 .hover-login .signup {
-    width: var(--other-width);
+    background: rgba(255, 255, 255, 0.35);
+    width: 30%;
 }
 
 .hover-signup .signup {
-    width: var(--hover-width);
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 70%;
 }
 
 .hover-signup .login {
-    width: var(--other-width);
+    background: rgba(255, 255, 255, 0.35);
+    width: 30%;
 }

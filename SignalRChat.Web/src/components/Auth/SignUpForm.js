@@ -20,6 +20,7 @@ const SignUpForm = ({ onMouseEnter, onSubmit, onChange, user, errors, ifShow, lo
                         name="firstName"
                         id="firstName"
                         placeholder="First Name"
+                        className="input-control"
                         onChange={onChange}
                         value={user.firstName}
                         required />
@@ -32,6 +33,7 @@ const SignUpForm = ({ onMouseEnter, onSubmit, onChange, user, errors, ifShow, lo
                         name="lastName"
                         id="lastName"
                         placeholder="Last Name"
+                        className="input-control"
                         onChange={onChange}
                         value={user.lastName}
                         required />
@@ -44,6 +46,7 @@ const SignUpForm = ({ onMouseEnter, onSubmit, onChange, user, errors, ifShow, lo
                         name="username"
                         id="signUpUsername"
                         placeholder="Username"
+                        className="input-control"
                         onChange={onChange}
                         value={user.username}
                         required />
@@ -56,6 +59,7 @@ const SignUpForm = ({ onMouseEnter, onSubmit, onChange, user, errors, ifShow, lo
                         name="email"
                         id="signUpEmail"
                         placeholder="Email"
+                        className="input-control"
                         onChange={onChange}
                         value={user.email}
                         required />
@@ -68,6 +72,7 @@ const SignUpForm = ({ onMouseEnter, onSubmit, onChange, user, errors, ifShow, lo
                         name="password"
                         id="signUpPassword"
                         placeholder="Password"
+                        className="input-control"
                         onChange={onChange}
                         value={user.password}
                         required />
@@ -80,6 +85,7 @@ const SignUpForm = ({ onMouseEnter, onSubmit, onChange, user, errors, ifShow, lo
                         name="passwordConfirm"
                         id="passwordConfirm"
                         placeholder="Confirm Password"
+                        className="input-control"
                         onChange={onChange}
                         value={user.passwordConfirm}
                         required />

@@ -20,6 +20,7 @@ const LoginForm = ({ onSubmit, onChange, onMouseEnter, username, password, error
                             name="username"
                             id="username"
                             placeholder="Username"
+                            className="input-control"
                             required
                             onChange={onChange}
                             value={username}
@@ -32,6 +33,7 @@ const LoginForm = ({ onSubmit, onChange, onMouseEnter, username, password, error
                             name="password"
                             id="password"
                             placeholder="Password"
+                            className="input-control"
                             required
                             onChange={onChange}
                             value={password} />
