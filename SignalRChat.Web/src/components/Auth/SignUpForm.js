@@ -13,33 +13,6 @@ const SignUpForm = ({ onMouseEnter, onSubmit, onChange, user, errors, ifShow, lo
                     <a href="#/test"><FontAwesomeIcon icon={['fab', 'facebook-f']} /></a>
                     <a href="#/test"><FontAwesomeIcon icon={['fab', 'google']} /></a>
                 </div>
-
-                <div>
-                    <input
-                        type="text"
-                        name="firstName"
-                        id="firstName"
-                        placeholder="First Name"
-                        className="input-control"
-                        onChange={onChange}
-                        value={user.firstName}
-                        required />
-                    {errors.username ? (<span className="text-danger">{errors.firstName}</span>) : null}
-                </div>
-
-                <div>
-                    <input
-                        type="text"
-                        name="lastName"
-                        id="lastName"
-                        placeholder="Last Name"
-                        className="input-control"
-                        onChange={onChange}
-                        value={user.lastName}
-                        required />
-                    {errors.username ? (<span className="text-danger">{errors.lastName}</span>) : null}
-                </div>
-
                 <div>
                     <input
                         type="text"
