@@ -1,12 +1,25 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Input } from '../../components/Shared/Form/Input';
+import Input from '../../components/Shared/Form/Input';
+import { required } from '../../helpers/Validators';
 
 
 class Form extends Component {
+    //TODO: generate state from props
     state = {
-        username: '',
-        password: '',
+        username: {
+            value: '',
+            errors: {
+                server: 'test'
+            },
+            isValid: false, //TODO: validate before render // Can be done with ref and componentDidMount
+            isDirty: false
+        },
+        password: {
+            value: '',
+            errors: {},
+            isValid: false,
+            isDirty: false
+        },
         errors: {}
     }
 
@@ -15,45 +28,62 @@ class Form extends Component {
     }
 
     onChange = (e) => {
-        console.log(e);
+        let error = '';
+        error = required(e);
+        this.setState({
+            [e.target.name]: {
+                value: e.target.value,
+                errors: {
+                    ...this.state[e.target.name].errors,
+                    required: error
+                },
+                isValid: error === '' ? true : false,
+                isDirty: true
+            }
+        });
+    }
+
+    isFormValid = () => {
+        var keys = Object.keys(this.state);
+        for (let i = 0; i < keys.length; i++) {
+            if (this.state[keys[i]].isValid === false)
+                return false;
+        }
+        return true;
     }
 
     render() {
         const { username, password, errors } = this.state;
         return (<div>
-            <form onSubmit={this.onSubmit}>               
+            <form onSubmit={this.onSubmit}>
                 <div>
                     {errors.error ? (<div className="text-danger">{errors.error}</div>) : null}
                     <div>
-                        <Input 
+                        <Input
                             type="text"
                             name="username"
                             id="username"
                             placeholder="Username"
                             onChange={this.onChange}
-                            value={username}
+                            object={username}
                             autoFocus
                         />
                     </div>
-                    {errors.username ? (<span className="text-danger">{errors.username}</span>) : null}
                     <div>
-                        <input
+                        <Input
                             type="password"
                             name="password"
                             id="password"
                             placeholder="Password"
-                            required
                             onChange={this.onChange}
-                            value={password} />
+                            object={password} />
                     </div>
-                    {errors.password ? (<span className="text-danger">{errors.password}</span>) : null}
                 </div>
-                
-                <button type="submit" className="btn" >Log In</button>
+                <button type="submit" className="btn" disabled={!this.isFormValid()}>Log In</button>
             </form>
         </div>);
     }
 }
 
 
-export default connect(null, null)(Form);
+export default Form;
