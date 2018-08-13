@@ -7,13 +7,15 @@ import { DefaultLayout, NoLayout } from '../containers/Layout';
 import Login from '../containers/Auth';
 import AppRoute from './AppRoute';
 import PrivateRoute from './PrivateRoute';
+import Form from '../containers/Shared/Forms';
 
 
 export default (props) => (
     <Provider store={props.store}>
         <BrowserRouter>
             <Switch>
-                <Redirect exact from="/" to="/home" />
+                <AppRoute exact path='/form' layout={DefaultLayout} component={Form} />
+                <Redirect exact from='/' to='home' />
                 <PrivateRoute exact path='/home' layout={DefaultLayout} component={Home} />
                 <AppRoute exact path='/login' layout={NoLayout} component={Login} />
                 <AppRoute exact path="/404" layout={DefaultLayout} component={Error} />
