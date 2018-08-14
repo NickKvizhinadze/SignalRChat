@@ -1,24 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Input = ({ type, object, name, id, placeholder, onChange, autoFocus }) => {
-    return (<div>
-        <div>
-            <input
-                type={type}
-                name={name}
-                id={id}
-                placeholder={placeholder}
-                onChange={onChange}
-                autoFocus={autoFocus}
-                value={object.value} />
-        </div>
-        {object.isDirty ?
-            Object.keys(object.errors)
-                .map(key => object.errors[key] ?
-                    (<div key={key}><span className="text-danger">{object.errors[key]}</span></div>)
-                    : null)
-            : null}
-    </div>);
+class Input extends Component {
+    inputRef = React.createRef();
+
+    render() {
+        const { type, object, name, id, placeholder, onChange, autoFocus } = this.props;
+        return (
+            <div>
+                <div>
+                    <input
+                        type={type}
+                        name={name}
+                        id={id}
+                        placeholder={placeholder}
+                        onChange={onChange}
+                        autoFocus={autoFocus}
+                        value={object.value}
+                        ref={e => this.inputRef = e} />
+                </div>
+                {object.isDirty ?
+                    Object.keys(object.errors)
+                        .map(key => object.errors[key] ?
+                            (<div key={key}><span className="text-danger">{object.errors[key]}</span></div>)
+                            : null)
+                    : null}
+            </div>);
+    }
 }
 
 export default Input;
