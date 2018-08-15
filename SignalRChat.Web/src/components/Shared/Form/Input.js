@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 class Input extends Component {
-    inputRef = React.createRef();
+    formComponent = React.createRef();
 
     render() {
         const { type, object, name, id, placeholder, onChange, autoFocus } = this.props;
@@ -16,7 +16,8 @@ class Input extends Component {
                         onChange={onChange}
                         autoFocus={autoFocus}
                         value={object.value}
-                        ref={e => this.inputRef = e} />
+                        ref={e => this.formComponent = e}
+                    />
                 </div>
                 {object.isDirty ?
                     Object.keys(object.errors)

@@ -6,38 +6,36 @@ class Form extends Component {
     constructor(props) {
         super(props);
         const obj = {};
-        const keys = Object.keys(props.formState);
-        for (let i = 0; i < keys.length; i++) {
-            const key = keys[i];
+        Object.keys(props.formState).forEach(key => {
             obj[key] = {
                 value: props.formState[key].value,
-                errors: { server: 'test' },
+                errors: {},
                 validators: props.formState[key].validators,
                 isValid: false,
                 isDirty: false
             };
-        }
+        });
+        
         this.state = {
             ...obj,
             errors: {}
-        }
+        };
     }
-
+    
+    
     componentDidMount() {
-        const keys = Object.keys(this.refs);
-        for (let i = 0; i < keys.length; i++) {
-            const key = keys[i];
+        Object.keys(this.refs).forEach(key => {
             const obj = this.state[key];
 
             obj.errors = {
                 ...obj.errors,
-                ...this.executeValidators(this.state[key].validators, this.refs[key].inputRef)
+                ...this.executeValidators(this.state[key].validators, this.refs[key].formComponent)
             };
             obj.isValid = !this.isValid(obj.errors) ? true : false;
             this.setState({
                 [key]: { ...obj }
             });
-        }
+        });
     }
 
     onSubmit = () => {
@@ -72,7 +70,7 @@ class Form extends Component {
     isValid = (errors) => {
         var keys = Object.keys(errors);
         for (let i = 0; i < keys.length; i++) {
-            if (errors[keys[i]].isValid === false)
+            if (!errors[keys[i]] || errors[keys[i]] === '')
                 return false;
         }
         return true;
@@ -82,7 +80,7 @@ class Form extends Component {
         var result = {};
         if (validators.length > 0) {
             validators.forEach(item => {
-                result[item.name] = item({ node })
+                result[item.validator.name] = item.validator({ node, parameters: item.parameters })
             });
         }
         return result
