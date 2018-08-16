@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Input from '../../components/Shared/Form/Input';
 
 
 class Form extends Component {
@@ -15,14 +14,14 @@ class Form extends Component {
                 isDirty: false
             };
         });
-        
+
         this.state = {
             ...obj,
             errors: {}
         };
     }
-    
-    
+
+
     componentDidMount() {
         Object.keys(this.refs).forEach(key => {
             const obj = this.state[key];
@@ -87,39 +86,21 @@ class Form extends Component {
     }
 
     render() {
-        const { username, password, errors } = this.state;
+        const formElements = React.Children.map(this.props.children, child =>
+            React.cloneElement(child, {
+                'object': this.state[child.props.name],
+                onChange: this.onChange
+            }));
         return (<div>
             <form onSubmit={this.onSubmit}>
                 <div>
-                    {errors.error ? (<div className='text-danger'>{errors.error}</div>) : null}
-                    <div>
-                        <Input
-                            type='text'
-                            name='username'
-                            id='username'
-                            ref='username'
-                            placeholder='Username'
-                            onChange={this.onChange}
-                            object={username}
-                            autoFocus
-                        />
-                    </div>
-                    <div>
-                        <Input
-                            type='password'
-                            name='password'
-                            id='password'
-                            ref='password'
-                            placeholder='Password'
-                            onChange={this.onChange}
-                            object={password} />
-                    </div>
+                    {this.state.errors.error ? (<div className='text-danger'>{this.state.errors.error}</div>) : null}
+                    {formElements.map((element, index) => (<div key={index}>{element}</div>))}
                 </div>
                 <button type='submit' className='btn' disabled={!this.isFormValid()}>Log In</button>
             </form>
         </div>);
     }
 }
-
 
 export default Form;

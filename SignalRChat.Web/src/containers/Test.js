@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Form from './Shared/Forms';
 import { required, min } from '../helpers/Validators';
+import Input from '../components/Shared/Form/Input';
 
 
 class Test extends Component {
@@ -17,7 +18,23 @@ class Test extends Component {
                 validators: [
                     { validator: required, parameters: null }]
             }
-        }}></Form>);
+        }}>
+            <Input
+                type='text'
+                name='username'
+                id='username'
+                ref='username'
+                placeholder='Username'
+                autoFocus />
+                
+            <Input
+                type='password'
+                name='password'
+                id='password'
+                ref='password'
+                placeholder='Password'
+                autoFocus />
+        </Form>);
     }
 }
 
